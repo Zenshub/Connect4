@@ -6,7 +6,7 @@ namespace Connect4.Controllers
 	{
 		public ActionResult Index(int? columnindex)
 		{
-			var board = new Board();
+			Board board = new Board();
 			if (Session.Count == 0)
 			{
 				Session["Model"] = board;
@@ -28,6 +28,7 @@ namespace Connect4.Controllers
 			board.AddPiece(columnindex, board.NextPlayer);
 		}
 
+		[HttpPost]
 		public ActionResult Restart(int? row, int? column)
 		{
 			Session.Clear();

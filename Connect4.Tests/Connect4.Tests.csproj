@@ -74,9 +74,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="MethodsTests.cs" />
     <Compile Include="Views\IndexView.cs" />
     <Compile Include="Utils\MockHttp.cs" />
+    <Compile Include="Models\BoardTests.cs" />
+    <Compile Include="Models\MatchesTests.cs" />
+    <Compile Include="Utils\BoardComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -84,6 +86,7 @@
   <ItemGroup>
     <Folder Include="Views\" />
     <Folder Include="Utils\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.28.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.28.0\build\Selenium.WebDriver.ChromeDriver.targets')" />

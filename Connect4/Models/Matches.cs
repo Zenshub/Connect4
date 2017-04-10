@@ -25,9 +25,8 @@
 				for (int i = 0; i < _TotalColumns; i++)
 				{
 					if (grid[i, j] == player && grid[i, j + 1] == player && grid[i, j + 2] == player && grid[i, j + 3] == player)
-					{
 						return true;
-					}
+
 				}
 			}
 			// verticalCheck
@@ -36,9 +35,8 @@
 				for (int j = 0; j < _TotalRows; j++)
 				{
 					if (grid[i, j] == player && grid[i + 1, j] == player && grid[i + 2, j] == player && grid[i + 3, j] == player)
-					{
 						return true;
-					}
+
 				}
 			}
 			// ascendingDiagonalCheck 

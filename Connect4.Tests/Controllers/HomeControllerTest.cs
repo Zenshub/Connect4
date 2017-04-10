@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Connect4.Controllers;
 using System.Web;
+using System;
 
 namespace Connect4.Tests
 {
@@ -25,6 +26,25 @@ namespace Connect4.Tests
 			var result = controller.Index(0) as ViewResult;
 			Assert.AreEqual("Index", result.ViewName);
 		}
+
+		[Test]
+		public void TestSession_WhenRestart_WithInputs()
+		{
+			var view = controller.Restart(5, 5) as ViewResult;
+			var result = controller.Session["Model"] as Board;
+
+			var expected = new Board(5, 5);
+
+			Assert.AreEqual(new BoardComparer().Compare(result, expected), 0);
+
+		}
+
+		[Test]
+		public void TestSession_WhenRestart()
+		{
+			var view = controller.Restart(5, 5) as ActionResult;
+		}
+
 
 	}
 }
