@@ -1,0 +1,73 @@
+﻿@model Board
+
+<div id="app" class="container">
+
+			<h1>Connect Four</h1>
+			<div>
+				<label>Select the board dimensions:</label>
+				Rows: <input id="rownumber" type="text" value="@Model.Grid.GetLength(1)">
+				Columns:<input id="columnnumber" type="text" value="@Model.Grid.GetLength(0)">
+
+			</div>
+
+			<div class="connect4-status">
+				<button  class="connect4-restart" id="restart">Restart</button>
+
+				<div class="flash-messages">
+				@if(!Model.IsValidDimensions)
+				{
+					<div class="flash-message flash-message-error">
+					Invalid Dimensions!
+					</div>
+				}
+			
+				@if(!Model.IsActive)
+				{
+					if(Model.Match.Winner !=string.Empty)
+					{
+					<div class="flash-message flash-message-warning">
+					<h2>@Model.Match.Winner won!</h2>Game over!
+					</div>
+					}
+					else
+					{
+					<div class="flash-message flash-message-warning">
+					Game over!
+					</div>
+					}
+				}
+			
+				</div>	
+			</div>
+		
+			<div class="connect4-board connect4-board--active">
+			 @for(int row=0; row<Model.Grid.GetLength(1); row++)
+				{
+				for(int column=0; column<Model.Grid.GetLength(0); column++)
+					{
+						var cell = Model.Grid[column, row];
+						var style= "#dddddd";
+						if(cell == CellStates.Red)
+						{
+							style = "Red";
+						}
+
+						if(cell == CellStates.Yellow)
+						{
+							style = "Yellow";
+						}
+
+						<div class="connect4-column">
+							<button class="connect4-cell" type="button"
+									style="background-color: @style"
+									onclick="location.href='@Url.Action("Index", "Home", new { columnindex = column})'"/>
+						</div>
+					}
+				}
+			</div>
+	
+</div>
+
+@section scripts{
+   @Scripts.Render("~/bundles/jquery")
+}
