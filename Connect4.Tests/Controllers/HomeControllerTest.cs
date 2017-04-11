@@ -40,11 +40,13 @@ namespace Connect4.Tests
 		}
 
 		[Test]
-		public void TestSession_WhenRestart()
+		public void TestController_WhenRestart_Redirect()
 		{
 			var view = controller.Restart(5, 5) as ActionResult;
-		}
 
+			Assert.That(view, Is.InstanceOf<RedirectToRouteResult>());
+
+		}
 
 	}
 }
